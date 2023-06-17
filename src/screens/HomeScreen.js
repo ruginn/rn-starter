@@ -1,8 +1,39 @@
-import React from "react";
-import { Text, StyleSheet } from "react-native";
+import React, {useState} from "react";
+import { Text, StyleSheet, View, Button, TouchableOpacity } from "react-native";
+import ListScreen from "./ListScreen";
 
-const HomeScreen = () => {
-  return <Text style={styles.text}>HomeScreen</Text>;
+
+
+const HomeScreen = ({navigation}) => {
+  const {navigate} = navigation
+  let jeff = 'fja4j23klgh dl'
+  const [name, setName] = useState('jeff')
+
+
+  const onButtonPress = () => {
+     navigate('List')
+  }
+
+  const onTouchPress = ()=> {
+    if(name !== 'jamal'){
+      setName('Earl')
+    } else{
+      setName('Gooper')
+    }
+  }
+
+  return <View>
+    <Text style={styles.text}> {name}</Text>
+    <Button 
+      onPress={onButtonPress}
+      title="Go to component Demo"/>
+    <TouchableOpacity onPress={onTouchPress}>
+      <Text>This is a button</Text>
+    </TouchableOpacity>
+    <Button 
+      onPress={()=>{navigate('Images')}}
+      title='Images'/>
+  </View>;
 };
 
 const styles = StyleSheet.create({
@@ -12,3 +43,5 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
+
+
